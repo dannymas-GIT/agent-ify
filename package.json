@@ -4,7 +4,7 @@
   "description": "Recipe Application",
   "default": "index.html",
   "scripts": {
-    "start": "parcel index.html --port ${PORT:-80} --host ${HOST:-0.0.0.0}",
+    "start": "parcel index.html --port ${PORT:-8080} --host ${HOST:-0.0.0.0}",
     "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Danny Mas",

@@ -19,7 +19,7 @@ RUN pip install -r requirements.txt
 # Build the application
 RUN npm run build
 
-# Expose port 80 (internal container port)
-EXPOSE 80
+# Expose port 8080 (internal container port)
+EXPOSE 8080
 
 # The CMD is now handled by docker-compose.yml
