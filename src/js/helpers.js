@@ -32,7 +32,7 @@ export const AJAX = async function(url, uploadData = undefined){
         const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
         const data = await res.json();
         
-        if (!res.ok) throw new Error(`${data.Error} (${res.status}) `)
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
         return data;
       }catch(err){
         throw err; 
@@ -52,3 +52,5 @@ export const AJAX = async function(url, uploadData = undefined){
     //         throw err; 
     //     }
     // };
+
+export const getJSON = AJAX;
