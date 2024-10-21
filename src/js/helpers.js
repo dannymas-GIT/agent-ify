@@ -54,3 +54,5 @@ export const AJAX = async function(url, uploadData = undefined){
     // };
 
 export const getJSON = AJAX;
+
+export const sendJSON = AJAX;

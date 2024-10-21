@@ -1,6 +1,6 @@
 import { async } from 'regenerator-runtime';
-import { API_URL, RES_PER_PAGE } from './config.js';
-import { getJSON, AJAX, sendJSON } from './helpers.js';
+import { API_URL, RES_PER_PAGE, KEY } from './config.js';
+import { AJAX } from './helpers.js'
 
 export const state = {
     agent: {},
@@ -29,7 +29,7 @@ const createAgentObject = function(data){
 
 export const loadAgent = async function(id){
     try{
-    const data = await getJSON(`https://api.github.com/repositories/${id}`);
+    const data = await AJAX(`https://api.github.com/repositories/${id}`);
     state.agent = createAgentObject(data);
     
     if(state.bookmarks.some(bookmark => bookmark.id === id))
@@ -45,7 +45,7 @@ export const loadAgent = async function(id){
 export const loadSearchResults = async function(query) {
   try {
     state.search.query = query;
-    const data = await getJSON(`${API_URL}?q=${query}+topic:ai&sort=stars&order=desc&per_page=${RES_PER_PAGE}`);
+    const data = await AJAX(`${API_URL}?q=${query}+topic:ai&sort=stars&order=desc&per_page=${RES_PER_PAGE}`);
     state.search.results = data.items.map(repo => {
       return {
         id: repo.id,
@@ -97,8 +97,8 @@ const init = function(){
 }
 init();
 
-export const uploadAgent = async function(newAgent){
-try{
+export const uploadAgent = async function(newAgent) {
+  try {
     const agent = {
       name: newAgent.name,
       source_url: newAgent.sourceUrl,
@@ -110,10 +110,10 @@ try{
         .filter(entry => entry[0].startsWith('feature') && entry[1] !== '')
         .map(feature => feature[1]),
     };
-    const data = await sendJSON(`${API_URL}?key=${KEY}`, agent);
+    const data = await AJAX(`${API_URL}?key=${KEY}`, agent);
     state.agent = createAgentObject(data);
     addBookmark(state.agent);
-  }catch(err){
+  } catch(err) {
     throw err;
   }
 }

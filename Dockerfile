@@ -23,3 +23,4 @@ RUN npm run build
 EXPOSE 8080
 
 # The CMD is now handled by docker-compose.yml
+CMD ["npm", "start"]

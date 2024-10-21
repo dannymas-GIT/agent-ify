@@ -1,22 +1,22 @@
 {
-  "name": "forkify",
+  "name": "agent-ify",
   "version": "1.0.0",
-  "description": "Recipe Application",
+  "description": "AI Agent Search Application",
   "default": "index.html",
   "scripts": {
-    "start": "parcel index.html --port ${PORT:-8080} --host ${HOST:-0.0.0.0}",
+    "start": "parcel index.html --port ${PORT:-8080} --host ${HOST:-localhost} --no-hmr",
     "build": "parcel build index.html --dist-dir ./dist"
   },
-  "author": "Danny Mas",
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.24.0",
-    "core.js": "^0.4.2",
-    "fracty": "^1.0.0",
-    "parcel": "^2.6.2",
+    "fracty": "^1.0.11",
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.6.2"
+    "@parcel/transformer-sass": "^2.6.2",
+    "parcel": "^2.6.2",
+    "parcel-reporter-static-files-copy": "^1.5.0"
   }
 }
